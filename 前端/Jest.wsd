@@ -1,0 +1,46 @@
+@startmindmap
++ Jest
+++ CLI
++++ `yarn jest --init` 初始化 Jest 配置文件
++++ `yarn jest --coverage` 生成测试覆盖率报告
++++ 选项
+++++ `-a` 测试所有文件中的测试用例，与 `--watchAll` 等同
+++++ `-o` 测试变更的文件中的测试用例，需要结合 git 使用，与 `--watch` 等同
+++++ `-f` 测试之前失败的测试用例
+++++ `-t` 测试符合测试用例名称过滤规则的用例
+++++ `-p` 测试符合测试文件名称过滤规则的用例
+++ 匹配器
++++ 常用
+++++ toBe 引用相等，类似与 `Object.is` 或 `===`
+++++ toEqual 内容相等
+++++ toBeNull 匹配是否为 `null`
+++++ toBeUndefined 匹配是否为 `undefined`
+++++ toBeDefined 与上相反（`null` 也匹配）
+++++ toBeTruthy 匹配真值
+++++ toBeFalsy 匹配假值
++++ 数字
+++++ toBeGreaterThan
+++++ toBeGreaterThanOrEqual
+++++ toBeLessThan
+++++ toBeLessThanOrEqual
+++++ toBeCloseTo 因浮点数精度问题，不可用 toBeEqual
++++ 字符串
+++++ toMatch 参数为字符串或正则表达式
++++ 数组
+++++ toContain
++++ 异常
+++++ toThrow
+++ 异步测试
++++ 回调 记得在回调函数最后调用 `done()`
++++ Promise
+++++ then/catch 记得 return Promise 对象，catch 上记得加上 `expect.assertions(1)`
+++++ resolves/rejects 记得 return Promise 对象
+++++ async/await + resolves/rejects 最优雅的编写方式
+++++ async/await catch 上记得加上 `expect.assertions(1)` 
+++ 钩子函数
++++ beforeAll
++++ beforeEach
++++ afterAll
++++ afterEach
+
+@endmindmap

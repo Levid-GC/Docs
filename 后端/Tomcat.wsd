@@ -1,0 +1,37 @@
+@startmindmap
++ Tomcat
+++ 简介：Apache 软件基金会开源软件，中小型应用服务器
+++ 原理
++++ Server 服务器
+++++_ 整个 Tomcat 服务器。包含多个组件，负责管理并启动各个 Service。监听 80 端口的 shutdown 命令并关闭整个容器。
++++ Service 服务
+++++_ Tomcat 封装的对外提供完整的基于组件的 Web 服务。各个 service 相互独立，但会共享同一个虚拟机资源
++++ Connector（核心）
+++++_ Tomcat 与外部世界的连接器。监听固定的端口，接收外部请求，将请求传给 Container，并将 Container 的处理结果返回给外部。
+++++ 接收客户端连接
+++++ 加工处理客户端请求：解析的过程生成 Request 对象，组装的过程生成 Response 对象。
++++ Container（核心）
+++++_ Servlet 容器，内部由多层容器组成。用于管理 Servlet 生命周期，调用 Servlet 的相关方法处理业务逻辑。
+++++ 所有子容器的父接口
+++++ 责任链设计模式
++++++_ Container -> Engine -> Host -> Context -> Wrapper -> Servlet
++++++ Engine：用于管理多个站点，一个 Service 只能拥有一个站点。
++++++ Host：代表一个站点，也可称为虚拟主机，可以通过 Host 配置站点。
++++++ Context：对应一个应用程序，相当于 war 包。
++++++ Wrapper：封装了的 Servlet。
++++ Jasper
+++++_ JSP 解析引擎。将 JSP 文件转化为 Java 文件，并编译为 .class 文件
++++ Naming
+++++_ 命名服务。将名称与对象联系起来，让我们使用名称访问对象。
++++ Session
+++++_ 管理和创建 Session，以及持久化。可自定义，可集成集群。对于 Tomcat 来说就是开辟的一个内存空间。
++++ Loging
+++++_ 记录日志，包括访问及运行信息
++++ JMX
+++++_ JavaSE 中定义的一个技术规范。为应用程序、设备、系统等植入管理功能的框架，可以远程监控 Tomcat 的运行状态。
+++ 安装（需要环境 JDK 1.8）
++++ Windows
+++++_ 解压后，双击 `bin/startup.bat` 即可启动。\l如遇中文乱码，将 `conf/logging.properties` 中 `UTF-8` 全部更改为 `GB2312`。
++++ Linux
+
+@endmindmap
